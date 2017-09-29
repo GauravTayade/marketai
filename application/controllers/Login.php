@@ -58,6 +58,7 @@ class Login extends MX_Controller
 
 						}
 						$user_data = array(
+							'user_id'   => $login_check->user_id,
 							'username' 	=> $login_check->name,
 							'email' 	=> $login_check->email,
 							'is_login'  => 1
@@ -123,13 +124,13 @@ class Login extends MX_Controller
 			$user_info = $this->login->getUser($this->input->post('email'));
 
 			$user_data = array(
+				'user_id'   => $user_info->user_id,
 				'username' 	=> $user_info->name,
 				'email' 	=> $user_info->email,
 				'is_login'  => 1
 			);
 
 			$this->session->set_userdata($user_data);
-			die();
 			$return = array('response' => 1, 'redirect' => site_url('dashboard'));
 
 		}else{

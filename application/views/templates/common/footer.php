@@ -1,4 +1,4 @@
-
+<script type="text/javascript" src="application/views/assets/appjs/fb.js"></script>
 			</div>
 			<!-- /main content -->
 

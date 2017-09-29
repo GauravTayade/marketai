@@ -11,14 +11,13 @@ class Dashboard extends MX_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('user/user_model','user');
 	}
 
 	public function index()
 	{
-		
-		$this->load->view('templates/common/header');
-		$this->load->view('templates/common/dashboard');
-		$this->load->view('templates/common/footer');
+		$data['user_pages'] = $this->user->getPageList();
+		$this->load->view('templates/common/dashboard',$data);
 
 	}
 

@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="application/views/assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="application/views/assets/js/core/app.js"></script>
+
 	<script type="text/javascript" src="application/views/assets/js/pages/login.js"></script>
 	<!-- /theme JS files -->
 	<!-- validation js -->
@@ -33,90 +34,11 @@
 	<script type="text/javascript" src="application/views/assets/validatejs/additional-methods.js"></script>
 
 	<script type="text/javascript" src="application/views/assets/appjs/login-reg.js"></script>
+    <script type="text/javascript" src="application/views/assets/appjs/fb.js"></script>
 
 </head>
 
 <body class="login-container">
-
-<script>
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
- window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1085488638252504', // Set YOUR APP ID
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true,  // parse XFBML
-      version    : 'v2.10',
-      oauth      : true
-    });
-
-    FB.Event.subscribe('auth.authResponseChange', function(response) 
-    {
-     if (response.status === 'connected') 
-    {
-        console.log("<br>Connected to Facebook");
-        //SUCCESS
-        FB.api('/me', { locale: 'tr_TR', fields: 'name, email,birthday, hometown,education,gender,website,work' },
-          function(response) {
-            $.ajax({
-            	url:'login/withFacebook',
-            	type:'POST',
-            	data:response,
-            	cache:false,
-            	success:function(data){
-            		var response = JSON.parse(data);
-            		if(response.response == 1){
-            			swal({
-            				title:'Success',
-            				text:response.success,
-            				icon:'success',
-            				confirmButtonText: "Ok"
-            			});
-            				window.location.href = response.redirect;
-            			
-            		}else{
-            			swal({
-            				title:'Warning',
-            				text:response.Warning,
-            				icon:'success',
-            			});
-            		}
-            	},
-            	error:function(){
-            		swal({
-            			title:'Oops!',
-            			text:'Unable to login with facebook',
-            			icon:'error'
-            		});
-            	}
-            });
-          }
-        );
-
-    }    
-    else if (response.status === 'not_authorized') 
-    {
-        console.log("Failed to Connect");
-
-        //FAILED
-    } else 
-    {
-        console.log("Logged Out");
-
-        //UNKNOWN ERROR
-    }
-    }); 
-
-    };
-
-</script>
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="navbar-header">
@@ -152,6 +74,8 @@
 	</div>
 	<!-- /main navbar -->
 
-
+    <script type="text/javascript">
+        var site_url = "<?php echo site_url() ?>";
+    </script>
 	<!-- Page container -->
 	<div class="page-container">

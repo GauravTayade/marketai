@@ -35,11 +35,13 @@
 	<script type="text/javascript" src="application/views/assets/js/core/app.js"></script>
 	<script type="text/javascript" src="application/views/assets/js/pages/dashboard.js"></script>
 	<script type="text/javascript" src="application/views/assets/js/pages/layout_fixed_custom.js"></script>
+	<script type="text/javascript" src="application/views/assets/js/plugins/forms/selects/select2.min.js"></script>
 	<!-- /theme JS files -->
 
 	<!-- validation js -->
 	<script type="text/javascript" src="application/views/assets/validatejs/jquery.validate.js"></script>
 	<script type="text/javascript" src="application/views/assets/validatejs/additional-methods.js"></script>
+	<!-- <script type="text/javascript" src="application/views/assets/appjs/fb.js"></script> -->
 
 </head>
 
